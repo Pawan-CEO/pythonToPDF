@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+        text-align: center; /* Centers the table horizontally */
+    }
+
+    .container table {
+        margin: 0 auto; /* Centers the table within the container */
+        border:2px solid black;
+    }
+
+
+    #table_data_div{
+        padding:5%;
+    }
+
+    table thead tr td{
+        border-bottom:2px solid black;
+    }
+        #table_data {
+            margin:0 auto;
+            width: 70%; /* Set the table width to 100% */
+        }
+        #table_data td {
+            text-align: center; /* Center the text inside the table cells */
+            padding:10px;
+        }
+
+
+        input[type="checkbox"]{
+    -webkit-appearance: initial;
+    appearance: initial;
+    background: gray;
+    width: 15px;
+    height: 15px;
+    border: none;
+    position: relative;
+}
+input[type="checkbox"]:checked {
+    background: gray;
+}
+input[type="checkbox"]:checked:after {
+    
+    content: "X";
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+
+}
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <h4><center>NEXCOM FALL, 2019</center></h4>
+        <h2><center>Savings by Market</center></h2>
+        <div class="container">
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="checkbox1"> With Sales Tax</td>
+                    <td><input type="checkbox" name="checkbox2", checked="True"> Without Sales Tax</td>
+                    <td><input type="checkbox" name="checkbox3"> With Velocity</td>
+                    <td><input type="checkbox" name="checkbox4", checked="True" > Without Velocity</td>
+                </tr>
+            </table>
+        </div>
+        <div id="table_data_div">
+            <table id="table_data">
+                <thead>
+                <tr>
+                    <td>City</td><td>Savings</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for city,saving in data.items() %}
+                <tr>
+                    <td>{{city}}</td><td>{{saving}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>&nbsp;</td><td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td><h3>Total Savings:</h3></td><td><h3>{{total_saving}} %</h3></td>
+                </tr>
+
+            </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
